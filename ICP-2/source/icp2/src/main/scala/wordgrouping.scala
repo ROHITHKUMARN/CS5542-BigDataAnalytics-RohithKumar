@@ -6,10 +6,10 @@ object wordgrouping {
     //    System.setProperty("hadoop.home.dir", "E:\\UMKC\\Sum_May\\KDM\\winutils")
     val conf = new SparkConf().setAppName("group by example").setMaster("local").set("spark.driver.host","localhost")
     val sc = new SparkContext(conf)
-    val f=sc.textFile("/Users/rohithkumarn/Documents/GitHub/CS5542-BigDataAnalytics-RohithKumar/ICP-2/icp2/src/main/scala/input")
+    val f=sc.textFile("/Users/rohithkumarn/Documents/GitHub/CS5542-BigDataAnalytics-RohithKumar/ICP-2/source/icp2/src/main/scala/input")
     val wc=f.flatMap(line=>{line.split(" ")})
     val out=wc.groupBy(word=>word.charAt(0))
-    out.foreach(println)
+    out.collect.foreach(print)
   }
 }
 
